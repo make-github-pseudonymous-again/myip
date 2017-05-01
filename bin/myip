@@ -43,7 +43,7 @@ _private () {
 }
 
 _unknown_scope () {
-  >&2 echo "Unknown scope: $1"
+  >&2 echo "Unknown scope: $1 | use 'public' or 'private'"
   exit 3
 }
 
