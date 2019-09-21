@@ -2,6 +2,7 @@
 
 EXEPATH="$0"
 EXE="$(basename "$EXEPATH")"
+RESOLVERS='@resolver4.opendns.com @resolver3.opendns.com @resolver2.opendns.com @resolver1.opendns.com'
 
 _usage () {
   if [ "$1" "$2" "$3" ] ; then
@@ -32,8 +33,15 @@ _route () {
 
 _public () {
   _usage "$#" -ne 0 "public"
-  dig +short myip.opendns.com @resolver1.opendns.com
-  exit "$?"
+  for resolver in $RESOLVERS ; do
+    result="$(dig +short myip.opendns.com "$resolver")"
+    rc="$?"
+    if [ -n "$result" ] ; then
+      printf "%s\n" "$result"
+      exit "$rc"
+    fi
+  done
+  exit 103
 }
 
 _private () {
