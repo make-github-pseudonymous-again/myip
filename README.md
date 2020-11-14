@@ -11,7 +11,7 @@ Find your public or private IP address.
 make DESTDIR=/ PREFIX=/usr install
 ```
 
-## "woman_astronaut: Usage
+## :woman_astronaut: Usage
 
 ```sh
 myip <scope>
