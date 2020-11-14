@@ -5,7 +5,7 @@ EXE="$(basename "$EXEPATH")"
 RESOLVERS='@resolver4.opendns.com @resolver3.opendns.com @resolver2.opendns.com @resolver1.opendns.com'
 
 _usage () {
-  if [ "$1" "$2" "$3" ] ; then
+  if test "$1" "$2" "$3" ; then
     >&2 echo "usage: $EXE $4"
     exit 2
   fi
